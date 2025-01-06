@@ -15,12 +15,12 @@
             <div id="inputs">
                 <div>
                     <label for="text">Título</label>
-                    <input id="title" type="text" name="titulo" placeholder="Introduce el titulo">
+                    <input maxlength="20" id="title" type="text" name="titulo" placeholder="Introduce el titulo" required>
                 </div>
 
                 <div>
                     <label for="content">Contenido</label>
-                    <input id="content" type="text" name="contenido" placeholder="Introduce el contenido">
+                    <input maxlength="50" id="content" type="text" name="contenido" placeholder="Introduce el contenido" required>
                 </div>
 
                 
@@ -32,10 +32,17 @@
         
         <ul id="lista">
             <h1>Posts</h1>
+
+            {% for entrada in entradas %}
+
             <li>
-                <div class="head"><span class="titulo_post">Titulo del post</span> <span class="fecha_post">06-01-2025</span></div>
-                <span class="contenido_post">Esto no es mas que un mero ejemplo de lo que seria un contenido en un blog</span>
+                <div class="head"><span class="titulo_post">{{entrada.title}}</span> <span class="fecha_post">{{fecha}}</span></div>
+                <span class="contenido_post">{{entrada.content}}</span>
             </li>
+
+            {% endfor %}
+
+
 
         </ul>
     </section>
