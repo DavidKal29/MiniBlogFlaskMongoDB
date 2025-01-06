@@ -10,7 +10,8 @@ cliente=MongoClient(os.getenv('endpoint'))#cliente del mongodb
 app.db=cliente.blogs#la base de datos del cliente, en este caso blogs
 
 
-
-
+@app.route('/')
+def mostrar_form():
+    return render_template('blog.html')
 if __name__=='__main__':
     app.run(debug=True)
