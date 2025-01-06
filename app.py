@@ -10,8 +10,17 @@ cliente=MongoClient(os.getenv('endpoint'))#cliente del mongodb
 app.db=cliente.blogs#la base de datos del cliente, en este caso blogs
 
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def mostrar_form():
+    titulo=''
+    contenido=''
+
+    if request.method=='POST':
+        titulo=request.form.get('titulo')
+        contenido=request.form.get('contenido')
+        parametros={'title':titulo,'content':contenido}
+        app.db.entradas.insert_one(parametros)
+
     return render_template('blog.html')
 if __name__=='__main__':
     app.run(debug=True)
